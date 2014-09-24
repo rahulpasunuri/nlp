@@ -19,14 +19,17 @@ def pruneText(s):
 	
 def main():
 	#(w1,w2,w3,count)--is the structure of the trigrams
-	f=open("hw-train.txt", 'r')
-	sentences=f.readlines()	
-	sentences=[(" <s1> <s2> "+pruneText(s)+" </s2> </s1> ").split() for s in sentences]
+	f1=open("hw2-train.txt", 'r')
+	f1=open("hw2-test.txt", 'r')
+	sentences=f1.readlines()	
+	sentences=[(" <s1> <s2> "+pruneText(s)+" </end>").split() for s in sentences]
 
 	#compute bigram counts
 	for s in sentences:
 		numWords=len(s)
 		for i in range(0,numWords-1):
+			if s[i]== "</end>":
+				break:
 			if (s[i],s[i+1]) in bigramCounts:
 				bigramCounts[(s[i],s[i+1])] +=1
 			else:
@@ -37,7 +40,7 @@ def main():
 	for s in sentences:
 		numWords=len(s)
 		for i in range(0,numWords):
-			if s[i] == "</s2>":
+			if s[i+1] == "</end>":
 				break
 			else:
 				if (s[i],s[i+1],s[i+2]) in trigramCounts:
