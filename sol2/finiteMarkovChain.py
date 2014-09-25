@@ -2,7 +2,7 @@
 import sys
 
 def matrixMultiplication(a,b):
-	# a is 4*1 matirix 	#b is 4*4 matrix
+	# a is 1*4 matirix 	#b is 4*4 matrix
 	result=[]
 	for i in range(0,4):
 		val=0.0

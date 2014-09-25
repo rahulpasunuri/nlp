@@ -1,0 +1,38 @@
+Team Details:
+1) Rahul Pasunuri (rahupasu@indiana.edu)
+2) Huzefa Dargahwala (hydargah@indiana.edu)
+
+----------------------------------------------------------------------------------------------------------
+
+Executing Files:
+1) python finiteMarkovChain.py
+	This command is used to execute the solution to the 2nd question.
+
+2) python finiteMarkovChain.py > output1.txt
+	This command will redirect the output of the program to a file named "output1.txt", which will be saved in the current working directory.
+
+3) python 3gram.py
+	This command is used to execute the solution to the 3rd question.
+
+4) python 3gram.py > "output2.txt"
+	This command can be used to redirect the output of the program to a file named "output2.txt", which will be saved in the current working directory.
+	
+
+Description of files:
+1) finiteMarkovChain.py:
+	This file contains the solution to the 2nd question. This file contains a matrix multiplication method, which takes 2 matrices of size 1x4 and 4x4 respectively and return the product of the matrices (of size). For every step taken, we do this matrix multiplication, to get the probabilities of the final states.
+	
+2) 3gram.py:
+	This file contains the solution to the 3rd question. This file contains 4 main methods, which are described below:
+
+a) modifyString():
+	This method takes a string and cleans the string from all the punctuations. It also adds two start and one end markers to the string.
+
+b) nGramTrain():
+ 	This computest the 3 gram probabilities of the training set, which will be later used for calculating the perplexities. 	 
+ 	
+c) nGramTest():
+ 	This computest the 3 gram probabilities of the test set.
+ 	
+d) computePerplexity():
+	This method computes the perplexity of the test model, with the training model. Here, we calculate perplexities per line, as well as total perplexity.
