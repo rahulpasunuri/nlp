@@ -1,11 +1,68 @@
 #!usr/bin/python
 import sys
 import WordsTagsProbability
+import math
 
+
+def calculate(sentence, tagSequence,wordsGivenTags, tagsGivenTags) :
+
+	previousTag = None
+	logTags = 0
+	logWord = 0
+	log0Flag = False
+
+	for index, tag in enumerate(tagSequence):
+		if tag == "S":
+			previousTag = tag
+			continue
+
+		#There can be problem with the final probablilty,ie: E given NN ..  watch out 	
+		print previousTag+"  "+tag	
+		for temp in tagsGivenTags:
+			if temp.tag1==tag and temp.tag2 == previousTag:
+				if temp.probability == 0: 
+					log0Flag = True
+					break
+				else:
+					print "Recording probability for the tag "+tag+ " given the probabaility of "+previousTag
+					logTags = logTags + math.log10(temp.probability)
+
+		for temp in wordsGivenTags:
+			#Watchout for this line too 
+			if tag == "E" : continue
+
+			if temp.word == sentence[index] and temp.tag2 == tag:
+				if temp.probability == 0: 
+					log0Flag = True
+					break
+				else:
+					print "Comparing word "+sentence[index]+"  with "+tag
+					logWord = logWord + math.log10(temp.probability)
+		if log0Flag == True : break		
+		previousTag = tag		
+	
+	if not log0Flag:	
+		totalValues = logTags+logWord	
+		print ""
+		print ""
+		print "Log values for logTags: " +str(logTags)
+		print "Log values for logWord: "+str(logWord)
+		print "Antilog values for tags: "+str(antilog(logTags))
+		print "Antilog values for words : "+str(antilog(logWord))
+		print "Total probability : "+str(antilog(totalValues))
+	else: 
+		print "One or more of the probabilities is 0, hence the answer is 0"	
+	
 def main():
 	
 	'''
 	Painstakingly writing all the values for probabilities
+	'''
+	'''
+	Works according to the formula I had
+	Just check and verify for logical bugs, also the answer is freakishly small so just check it.
+
+
 	'''
 
 	wordsGivenTags = []
@@ -42,7 +99,92 @@ def main():
 	tagsGivenTags.append(WordsTagsProbability.WordsTagsProbability(None,"NN","DT",38.0170))
 	tagsGivenTags.append(WordsTagsProbability.WordsTagsProbability(None,"E","NN",0.2069))
 
-	print len(wordsGivenTags)
+	#Storing the tag sequence as an iterable list. Easy to work with
+	tagList1 = ["S","VB","NNS","IN","DT","NN","E"]
+	tagList2 = ["S","JJ","VBZ","VB","DT","NN","E"]
+	sentence = ["S","time","flies","like","an","arrow","E"]
 
+	calculate(sentence, tagList1,wordsGivenTags,tagsGivenTags)
+	calculate(sentence, tagList2,wordsGivenTags,tagsGivenTags)
+'''	
+	#Now we iterate through the list 
+
+	previousTag = None
+	logTags = 0
+	logWord = 0
+
+	for index, tag in enumerate(tagList1):
+		if tag == "S":
+			previousTag = tag
+			continue
+
+		#There can be problem with the final probablilty,ie: E given NN ..  watch out 	
+		print previousTag+"  "+tag	
+		for temp in tagsGivenTags:
+			if temp.tag1==tag and temp.tag2 == previousTag:
+				print "Recording probabaility for the tag "+tag+ " given the probabaility of "+previousTag
+				logTags = logTags + math.log10(temp.probability)
+
+		for temp in wordsGivenTags:
+			#Watchout for this line too 
+			if tag == "E" : continue
+
+			if temp.word == sentence[index] and temp.tag2 == tag:
+				print "Comparing word "+sentence[index]+"  with "+tag
+				logWord = logWord + math.log10(temp.probability)
+
+		previousTag = tag		
+
+	totalValues = logTags+logWord	
+	print "Log values for logTags: " +str(logTags)
+	print "Log values for logWord: "+str(logWord)
+	print ""
+	print ""
+	print "Antilog values for tags: "+str(antilog(logTags))
+	print "Antilog values for words : "+str(antilog(logWord))
+	print "Total probability : "+str(antilog(totalValues))
+
+	previousTag = None
+	logTags = 0
+	logWord = 0
+	totalValues = 0
+
+	for index, tag in enumerate(tagList2):
+		if tag == "S":
+			previousTag = tag
+			continue
+
+		#There can be problem with the final probablilty,ie: E given NN ..  watch out 	
+		print previousTag+"  "+tag	
+		for temp in tagsGivenTags:
+			if temp.tag1==tag and temp.tag2 == previousTag:
+				print "Recording probabaility for the tag "+tag+ " given the probabaility of "+previousTag
+				
+				logTags = logTags + math.log10(temp.probability)
+
+		for temp in wordsGivenTags:
+			#Watchout for this line too 
+			if tag == "E" : continue
+
+			if temp.word == sentence[index] and temp.tag2 == tag:
+				print "Comparing word "+sentence[index]+"  with "+tag
+				logWord = logWord + math.log10(temp.probability)
+
+		previousTag = tag		
+
+	totalValues = logTags+logWord	
+	print "Log values for logTags: " +str(logTags)
+	print "Log values for logWord: "+str(logWord)
+	print ""
+	print ""
+	print "Antilog values for tags: "+str(antilog(logTags))
+	print "Antilog values for words : "+str(antilog(logWord))
+	print "Total probability : "+str(antilog(totalValues))
+	print ""
+	print ""
+	
+'''	
+def antilog(logvalues):
+	return 10 ** logvalues
 
 if __name__ == "__main__": main()	
