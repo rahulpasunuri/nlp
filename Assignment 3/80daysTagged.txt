@@ -1,0 +1,152 @@
+#Parts of Speech Tagged by 
+#Huzefa Dargahwala (hydargah@indiana.edu)
+#Rahul Pasunuri (rahupasu@indiana.edu)
+
+Was --> VBD
+Phileas --> NNP
+Fogg --> NNP
+rich --> JJ
+? --> . (Sentence Terminator)
+
+Undoubtedly --> RB
+. --> . (Sentence Terminator)
+
+But --> CC
+those --> DT
+who --> WP
+knew --> VBD
+him --> PP
+best --> JJ
+could --> MD
+not --> RB
+imagine --> VB
+how --> WRB
+he --> PRP
+had --> VBN
+made--> VBD
+his --> PP
+fortune --> NN
+, --> , (Comma)
+and --> CC
+Mr. --> NN
+Fogg --> NNP
+was --> VBD
+the -->DT
+last --> JJ
+person --> NN
+to --> TO
+whom --> WP
+to --> TO
+go --> VB
+for --> CC
+the --> DT
+information --> NN
+. --> . (Sentence Terminator)
+
+He --> PRP
+was --> VBD
+not --> RB
+lavish --> JJ
+, --> , (Comma)
+nor --> CC
+, --> , (Comma)
+on --> IN
+the --> DT
+contrary --> JJ
+, --> , (Comma)
+avaricious --> JJ
+; --> : (Colon or Ellipsis)
+for -->CC
+, --> , (Comma)
+whenever --> WRB
+he --> PRP
+knew --> VBD
+that --> DT
+money --> NN
+was --> VBD
+needed --> VBN
+for --> CC
+a --> DT
+noble --> JJ
+, --> , (Comma)
+useful --> JJ
+, --> , (Comma)
+or --> CC
+benevolent --> JJ
+purpose --> NN
+, --> , (Comma)
+he --> PRP
+supplied --> VBD
+it --> PRP
+quietly --> JJ
+and --> CC
+sometimes --> RB
+anonymously --> JJ
+. --> . (Sentence Terminator)
+
+He --> PRP
+was --> VBD
+, --> , (Comma)
+in --> IN
+short --> JJ
+, --> , (Comma)
+the --> DT
+least --> JJ
+communicative --> JJ 
+of --> IN
+men --> NNS
+. --> . (Sentence Terminator)
+
+He --> PRP
+talked --> VBD
+very --> RB
+little --> JJ
+, --> , (Comma)
+and --> CC
+seemed --> VBN
+all --> DT
+the --> DT
+more --> RBR
+mysterious --> JJ
+for --> CC
+his --> PRP$
+taciturn --> JJ
+manner --> NN
+. --> . (Sentence Terminator)
+
+His --> PRP$
+daily --> JJ
+habits --> NNS
+were -->  VBD
+quite --> RB
+open --> JJ
+to --> TO
+observation --> NN
+; --> : (Colon or Ellipsis)
+but --> CC
+whatever --> WP
+he --> PRP
+did --> VBD
+was --> VBD
+so --> CC
+exactly --> RB
+the --> DT
+same --> JJ
+thing --> NN
+that --> DT
+he --> PRP
+had --> VBN
+always --> RB
+done --> VBN
+before --> RP
+, --> , (Comma)
+that --> DT
+the --> DT 
+wits --> NNS
+of --> IN
+the --> DT
+curious --> JJ
+were --> VBD
+fairly --> RB
+puzzled --> JJ
+. --> . (Sentence Terminator)
