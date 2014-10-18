@@ -7,19 +7,21 @@ def calculate(sentence, tagSequence,wordsGivenTags, tagsGivenTags) :
 
 	previousTag = None #Used to keep track of the preceding word 
 
-	logTags = 0
+	#just storing the logs separately for simplicity
+	logTags = 0 
 	logWord = 0
 
 	log0Flag = False #This will be used to detect if a probability is 0
 
+	#iterate over the entire given sequence
 	for index, tag in enumerate(tagSequence):
 		#Marks start of sentence
 		if tag == "S":
 			previousTag = tag
 			continue
-
-		#There can be problem with the final probablilty,ie: E given NN ..  watch out 	
+ 	
 		print "From state "+previousTag+" to state "+tag	
+	
 		for temp in tagsGivenTags:
 			if temp.tag1==tag and temp.tag2 == previousTag:
 				if temp.probability == 0: 

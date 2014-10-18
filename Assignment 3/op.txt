@@ -1,0 +1,30 @@
+From state S to state VB
+Recording probability for the tag VB given the probabaility of S
+Recording probability of word time given the probability of VB
+From state VB to state NNS
+Recording probability for the tag NNS given the probabaility of VB
+Recording probability of word flies given the probability of NNS
+From state NNS to state IN
+Recording probability for the tag IN given the probabaility of NNS
+Recording probability of word like given the probability of IN
+From state IN to state DT
+Recording probability for the tag DT given the probabaility of IN
+Recording probability of word an given the probability of DT
+From state DT to state NN
+Recording probability for the tag NN given the probabaility of DT
+Recording probability of word arrow given the probability of NN
+From state NN to state E
+Recording probability for the tag E given the probabaility of NN
+
+
+Log values for logTags: -8.72682588457
+Log values for logWord: -15.1862795662
+Antilog values for tags: 1.8757463733e-09
+Antilog values for words : 6.51209059648e-16
+Total probability : 1.22150303189e-24
+From state S to state JJ
+Recording probability for the tag JJ given the probabaility of S
+
+
+Error : 
+One or more of the probabilities is 0, hence the answer is 0
