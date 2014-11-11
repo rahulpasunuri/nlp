@@ -1,6 +1,10 @@
 #!/usr/bin/python
 
 liRules=[] #this will hold the list of all rules.
+beta = {} #this variable will hold all inside probabilties.
+#each element in beta will be a hash from  (j, p, q) to  pr
+liNonTerminal=[] # this will hold the list of all unique non terminals
+liWords=[]
 
 class rule:
 	def __init__(self, parent, liChildren, prob):
@@ -35,10 +39,77 @@ def printRules():
 	for r in liRules:
 		printRule(r)
 	
+def computeSplit(nt, p, q):
+	global beta		
+	global liRules		
+	global liNonTerminal
+	global liWords
+		
+	prob = 0
+	if p==q:
+		#init beta..
+		for r in liRules:
+			if len(r.liChildren)==1 and r.parent == nt:
+				if r.liChildren[0] in liNonTerminal:					
+					probTemp = (r.prob*computeSplit(r.Children[0], p, p))
+					if probTemp!=0:
+						prob+=probTemp
+				elif r.liChildren[0] == liWords[p]:
+					prob +=  r.prob					
+		return prob
+				
+	# d is the split between p and q.
+	for d in range(p,q):
+		for r in liRules:
+			if r.parent == nt:
+				#ignore other rules..
+				if len(r.liChildren)==2 and (r.liChildren[0], p, d) in beta and (r.liChildren[1], d+1, q) in beta:
+					prob += (r.prob) * beta[r.liChildren[0], p, d] * beta[r.liChildren[1], d+1, q]
+				elif len(r.liChildren)==1 and r.liChildren[0] in liNonTerminal:
+					probTemp = computeSplit(r.liChildren[0], p, q)
+					if probTemp!=0:
+						prob+=r.prob*probTemp
+										
+	return prob				
+
 def main():		
+	global beta
+	global liRules
+	global liNonTerminal
+	global liWords
 	addRules()
-	printRules()
-	print
+	#printRules()
+	sentence = "A dog ate pizza with a fork in a kitchen"
+	liWords = [ a.lower() for a in sentence.split()] # convert all words to a lower case.
+	
+	beta = {} #this variable will hold all inside probabilties.
+	#each element in beta will be a hash from  (j, p, q) to  prob, where j represents a symbol, p is the starting word and q is the ending word.
+	
+	#get the list of all non-terminals.
+	liNonTerminals = list(set([ a.parent for a in liRules])) #set removes all the repeating non terminals...	
+	
+
+	
+	size = len(liWords)
+	for d in range(size):
+		for p in range(size):
+			q = p+d
+			if q < size:
+				for nt in liNonTerminals:
+					beta[nt, p, q] = computeSplit(nt, p, q)
+	
+	#for each non terminal
+	for nt in liNonTerminals:
+		#for each starting word number
+		for p in range(len(liWords)):
+			#for each ending word number
+			for q in range(p+1, len(liWords)):					
+#				beta[nt, p, q]=computeSplit(nt, p, q)				
+				pass
+	
+	for key in beta:
+		if beta[key]!=0:
+			print key, " ", beta[key]	
 	
 	
 #Execution begins here
