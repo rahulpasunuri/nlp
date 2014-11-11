@@ -71,9 +71,11 @@ def main():
 
 	#Beta is also a dict of dict
 	beta = dict()
+	#Initial Beta
 	beta[6] = {'DT':1, 'JJ':1, 'NN':1, 'VB':1}
 
 	#We now use the formula we learnt to calculate all alphas
+	#We are calculating all the alphas, not just the ones required to be calculated. 
 	for i in range(2,len(splitSent)+1):
 		temp = dict()
 		temp['DT'] = (alpha[i-1]['DT']*transitionMatrix[('DT','DT')]+alpha[i-1]['JJ']*transitionMatrix[('JJ','DT')]+alpha[i-1]['NN']*transitionMatrix[('NN','DT')]+alpha[i-1]['VB']*transitionMatrix[('VB','DT')])*emitMatrix[(splitSent[i-1],'DT')]
@@ -82,16 +84,17 @@ def main():
 		temp['VB'] = (alpha[i-1]['DT']*transitionMatrix[('DT','VB')]+alpha[i-1]['JJ']*transitionMatrix[('JJ','VB')]+alpha[i-1]['NN']*transitionMatrix[('NN','VB')]+alpha[i-1]['VB']*transitionMatrix[('VB','VB')])*emitMatrix[(splitSent[i-1],'VB')]
 		alpha[i] = temp
 	
-	#Now we calculate all Beta
+	#Now we calculate all Beta in a similar manner to the alphas
 	for i in range(5,0,-1):
 		temp = dict()
-		temp['DT'] = (beta[i+1]['DT']*transitionMatrix[('DT','DT')]+beta[i+1]['JJ']*transitionMatrix[('JJ','DT')]+beta[i+1]['NN']*transitionMatrix[('NN','DT')]+beta[i+1]['VB']*transitionMatrix[('VB','DT')])*emitMatrix[(splitSent[i-1],'DT')]
-		temp['JJ'] = (beta[i+1]['DT']*transitionMatrix[('DT','JJ')]+beta[i+1]['JJ']*transitionMatrix[('JJ','JJ')]+beta[i+1]['NN']*transitionMatrix[('NN','JJ')]+beta[i+1]['VB']*transitionMatrix[('VB','DT')])*emitMatrix[(splitSent[i-1],'JJ')]
-		temp['NN'] = (beta[i+1]['DT']*transitionMatrix[('DT','NN')]+beta[i+1]['JJ']*transitionMatrix[('JJ','NN')]+beta[i+1]['NN']*transitionMatrix[('NN','NN')]+beta[i+1]['VB']*transitionMatrix[('VB','DT')])*emitMatrix[(splitSent[i-1],'NN')]
-		temp['VB'] = (beta[i+1]['DT']*transitionMatrix[('DT','VB')]+beta[i+1]['JJ']*transitionMatrix[('JJ','VB')]+beta[i+1]['NN']*transitionMatrix[('NN','VB')]+beta[i+1]['VB']*transitionMatrix[('VB','DT')])*emitMatrix[(splitSent[i-1],'VB')]
+		temp['DT'] = (beta[i+1]['DT']*transitionMatrix[('DT','DT')]+beta[i+1]['JJ']*transitionMatrix[('DT','JJ')]+beta[i+1]['NN']*transitionMatrix[('DT','NN')]+beta[i+1]['VB']*transitionMatrix[('DT','VB')])*emitMatrix[(splitSent[i-1],'DT')]
+		temp['JJ'] = (beta[i+1]['DT']*transitionMatrix[('JJ','DT')]+beta[i+1]['JJ']*transitionMatrix[('JJ','JJ')]+beta[i+1]['NN']*transitionMatrix[('JJ','NN')]+beta[i+1]['VB']*transitionMatrix[('JJ','VB')])*emitMatrix[(splitSent[i-1],'JJ')]
+		temp['NN'] = (beta[i+1]['DT']*transitionMatrix[('NN','DT')]+beta[i+1]['JJ']*transitionMatrix[('NN','JJ')]+beta[i+1]['NN']*transitionMatrix[('NN','NN')]+beta[i+1]['VB']*transitionMatrix[('NN','VB')])*emitMatrix[(splitSent[i-1],'NN')]
+		temp['VB'] = (beta[i+1]['DT']*transitionMatrix[('VB','DT')]+beta[i+1]['JJ']*transitionMatrix[('VB','JJ')]+beta[i+1]['NN']*transitionMatrix[('VB','NN')]+beta[i+1]['VB']*transitionMatrix[('VB','VB')])*emitMatrix[(splitSent[i-1],'VB')]
 		beta[i] = temp
 
-	#Now we print all the calculated values.	
+	#Now we print all the calculated values.
+	# Since we have all the values of alpha's and beta's calculated, you can change the key in output below to get alpha and beta of your wish	
 	print ""
 	print "Alpha 4 NN "+str(alpha[4]['NN'])
 	print "Alpha 3 VB "+str(alpha[3]['VB'])
@@ -106,10 +109,12 @@ if __name__ == "__main__": main()
 '''
 Output :
 
+
 Alpha 4 NN 0.00019905247002
 Alpha 3 VB 0.042590091
 Alpha 1 DT 0.3825
 
-Beta 4 NN 0.014097
-Beta 3 NN 0.0007136998
+Beta 4 NN 0.002811
+Beta 3 NN 0.000624033
+
 '''
