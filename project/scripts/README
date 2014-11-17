@@ -1,0 +1,38 @@
+### Instructions for running the feature selection code
+### L645, Fall 2014, Indiana University
+
+### Environment Requirement: Python2.6 or Python2.7 
+### Have numpy installed. The IU servers usually have numpy installed
+    1. Make a folder called "corpus", at the same level of this.
+       Make a folder called "svmdata" at the same level of this.
+    2. Go to L645Code/
+    3. TO DO FEATURE SELECTION run: (You will need B.1 and B.2 mentioned below)
+       python binary_feature_slc.py -nl neg_list.pickle -pl pos_list.pickle -p ../L645ExampleData -n 3 -f 1 -m 1000 -e tagged -r y
+
+
+    4. TO EXTRACT DATA VECTORS GIVEN THE FEATURES run: (You will need B.1 and B.3 mentioned below)
+       python build_data_vector.py -s ../corpus/1_IG.features -p ../L645ExampleData/ -n 3 -e tagged -rl pos_list.pickle -o somename
+
+    **Help Document**
+        python binary_feature_slc.py --help 
+        python build_data_vector.py --help
+
+-----------------------------------------------
+### Description of the data one needs to provide:
+   B.1. A folder contains the review data. Requirement:
+      1) One recipe per file
+      2) Each recipe is represented as a list of comments, each comment is a list of sentences, each sentence is a list of words. 
+      [
+        [ ["I","like","this"], ["Very", "easy","to","make"] ],  ##comment1 - having two sentences
+        [["Dissapointed","tasted","blank"] ],  ##comment2 - having one sentence
+      ]
+
+      3)This big list is stored as a Python pickle.
+
+   B.2. Two files specifying your data partition
+      One contains the recipe names of those from your NEGATIVE partition
+      One contains the recipe names of those from your POSITIVE partition
+      **Each file is a Python list of recipe names,stored as a Python pickle. 
+
+   B.3. One file specifying the recipe names you want to extract the vectors from.
+      The file contains a Python list of recipe names, and is stored as a Python pickle 
