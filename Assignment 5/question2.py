@@ -97,10 +97,10 @@ def main():
 
 	
 	size = len(liWords)
-	for d in range(size):
-		for p in range(size):
+	for d in range(size): #calculate probabilities starting from small distances to large distances..
+		for p in range(size): # p is the word index of the start
 			q = p+d
-			if q < size:
+			if q < size: #q is the end index.. note that q-p is the distance between them.
 				for nt in liNonTerminals:
 					beta[nt, p, q] = computeSplit(nt, p, q)
 	print
