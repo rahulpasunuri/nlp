@@ -13,6 +13,7 @@ class rule:
 		self.prob = prob # this is the probability of the rule.
 		
 def printRule(r):
+	# print the rules in a neat format.
 	print r.parent," ---> "," ".join(r.liChildren), " ", r.prob
 	
 def addRules():
@@ -46,12 +47,12 @@ def computeSplit(nt, p, q):
 	global liWords
 
 	prob = 0
-	if p==q:
+	if p==q: #this is the init step where we find beta values for all the words (of length 0)
 		#init beta..
-		for r in liRules:
-			if len(r.liChildren)==1 and r.parent == nt:
+		for r in liRules: # loop over all the rules.
+			if len(r.liChildren)==1 and r.parent == nt:  #use only those rules with a matching parent and only have one symbol on RHS.
 				if r.liChildren[0] in liNonTerminals:					
-					probTemp = (r.prob*computeSplit(r.liChildren[0], p, p))
+					probTemp = (r.prob*computeSplit(r.liChildren[0], p, p)) #do a recursive computation of the split.
 					if probTemp!=0:
 						prob+=probTemp
 				elif r.liChildren[0] == liWords[p]:
@@ -60,12 +61,12 @@ def computeSplit(nt, p, q):
 				
 	# d is the split between p and q.
 	for d in range(p,q):
-		for r in liRules:
-			if r.parent == nt:
+		for r in liRules: # loop over all the rules.
+			if r.parent == nt: # use only those rules with matching parents (left hand side non terminal)
 				#ignore other rules..
-				if len(r.liChildren)==2 and (r.liChildren[0], p, d) in beta and (r.liChildren[1], d+1, q) in beta:
+				if len(r.liChildren)==2 and (r.liChildren[0], p, d) in beta and (r.liChildren[1], d+1, q) in beta: #case where rule has two children(R.H.S)
 					prob += (r.prob) * beta[r.liChildren[0], p, d] * beta[r.liChildren[1], d+1, q]
-				elif len(r.liChildren)==1 and r.liChildren[0] in liNonTerminals:
+				elif len(r.liChildren)==1 and r.liChildren[0] in liNonTerminals: #case where rule only has one children.
 					probTemp = computeSplit(r.liChildren[0], p, q)
 					if probTemp!=0:
 						prob+=r.prob*probTemp
