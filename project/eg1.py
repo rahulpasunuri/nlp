@@ -1,35 +1,78 @@
-import os
-import io
+import os, re 
+import Recipe, cleaning
+from Recipe import Recipe
+import pickle
+
+'''
+This was the program I wrote to extract ratings and reviews as a list 
+Each individual review and overall rating(From filename) is captured.
+For each recipe , allReviewsDict will store a review as key and rating as value
+This entire allReviewsDict will be used in the Recipe Datastrucutre to store 
+allReviewsDict for all recipes.
+'''
 
 def main():
-	reviewDirectory = "nyu\\PROJECTS\\Epicurious\\DATA\\reviews\\"
-	ratingList = []
-	reviewList = []	
+	reviewDirectory = "temp/"
+	
+	#This dataset will be a list of recipe objects
+	Dataset = []
 
 	fileList = os.listdir(reviewDirectory)
-	
+	#allReviews = open("fewReviews.txt",'w')
+	counter = 0
 	for f in fileList:
-		currentFile = io.open(reviewDirectory+f,newline="",encoding="cp437")
+
+		counter = 0
+		currentFile = open(reviewDirectory+f)
+		allReviewsListOfTuples = []
+		ratingList = []
+		reviewList = []	
 		recipeName = getRecipeName(f)
-		print
+		totalRating = getTotalRating(f)
+		print "*"*100
+		print f + "------- "+ str(totalRating)
+		print "*"*100
+		raw_input("Proceed displaying file ?")
 		for line in currentFile:
 			if line=="\n":
 				continue
 			if "Rating" in line:
-				rating = line[len(line)-2]
-				print  recipeName+" = "+rating
-				try:
-					rating = int(rating)
-				except :
-					continue	
+				counter = counter+1
+				rating = getReviewRating(line)
+				rating = int(rating)
 				ratingList.append(int(rating))
 			else : 
-				try:
-					review = line.encode('utf-8')
-					reviewList.append(str(review))
-				except :
-					ratingList.pop();		
-					continue
+				review = cleaning.processForAnotherFile(line)
+				if review != []:
+					reviewList.append(review)
+
+
+		print "Length of review list "+str(len(reviewList)) 
+		print "Counter : "
+		print ratingList
+		print ""
+		print ""
+		print reviewList		
+
+		#Representing each review and its rating as a tuple
+		for i in range(0,len(reviewList)):
+			allReviewsListOfTuples.append((reviewList[i],ratingList[i]))
+		
+		RecipeObj = Recipe(name=recipeName, rating=totalRating, allReviews=allReviewsListOfTuples,numOfReviews= counter)
+		Dataset.append(RecipeObj)
+
+	for obj in Dataset:
+		print obj.name+" --> "+str(obj.rating)+ " Number of Reviews --> "+ str(obj.numOfReviews)
+		print obj.allReviews
+		#raw_input("Proceed ?")	
+
+	pickleFile = open("ReviewsDataStructureDump.txt", "wb")
+	pickle.dump(Dataset, pickleFile)
+	pickleFile.close()	
+		
+	#print "Total Number of Reviews : "+str(len(reviewList))
+		
+	#allReviews.close()				
 
 def getRecipeName(rawRecipeName):
 	startIndex = rawRecipeName.rfind('_');
@@ -38,7 +81,26 @@ def getRecipeName(rawRecipeName):
 	processedName = semiProcessed.replace('-',' ')
 	return processedName
 
+'''def getReviewsAndRatings(currentFile):
+	ratingIndex = currentFile.findall("Rating")
+'''	
+def getReviewRating(line):
+	regEx = "\d+"
+	regExObj = re.compile(regEx)
+	numberList = regExObj.findall(line)
+	if len(numberList) == 1:
+		return numberList[0]
+	else:
+		return ".".join(numberList)
 
-if __name__=="__main__": main()		
+def getTotalRating(fileName):
+	regEx = "\d+"
+	regExObj = re.compile(regEx)
+	numberList = regExObj.findall(fileName)
+	if len(numberList) == 3:
+		rating = '.'.join(numberList[0:2])
+	else:
+		rating = '.'.join(numberList[0:1])	
+	return rating
 
-	
+if __name__=="__main__": main()
