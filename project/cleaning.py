@@ -1,9 +1,7 @@
 import logging
-import gensim
-import pickle
+import cPickle as pickle
 import re
 
-from gensim import corpora, models, similarities
 
 def main():
 	logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
@@ -21,17 +19,12 @@ def main():
 		punctuationRemoved = [word for word in punctuationRemoved if word != ' ']
 		punctuationRemoved = removeStopWords(punctuationRemoved)
 		listOfReviews.append(punctuationRemoved)
+	
+	for review in listOfReviews:
+		for word in review:
+			print type(word)
 
-	
-	dictionary = corpora.Dictionary(listOfReviews)
-	dictionary.save_as_text("myDict.txt",sort_by_word=True)
-	corpus = [dictionary.doc2bow(review) for review in listOfReviews]
-	corpora.MmCorpus.serialize('reviewsCorpus.mm',corpus)
-	id2word = corpora.Dictionary.load_from_text("myDict.txt")
-	lda = gensim.models.ldamodel.LdaModel(corpus=corpus,id2word=id2word,num_topics=10,passes=1,update_every=1)
-	lda.print_topics(10)
-	
-	writeObject = open('listOfListDump','wb')
+	writeObject = open('listOfListDump.pickle','wb')
 	pickle.dump(listOfReviews,writeObject)
 
 	writeObject.close()
@@ -39,7 +32,7 @@ def main():
 def processForAnotherFile(line):
 	line = line.lower()
 	'''
-	With thid method, I will process lines coming from other files
+	With this method, I will process lines coming from other files
 	'''
 	punctuationRemoved = processLine(line)
 	punctuationRemoved = [word for word in punctuationRemoved if word != ' ']

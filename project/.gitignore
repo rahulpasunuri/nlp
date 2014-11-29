@@ -1,1 +1,5 @@
-project/nyu/
+*.pyc
+*.mm
+*.dict
+*.pickle
+*.sh

@@ -1,7 +1,7 @@
 import os, re 
 import Recipe, cleaning
 from Recipe import Recipe
-import pickle
+import cPickle as pickle
 
 '''
 This was the program I wrote to extract ratings and reviews as a list 
@@ -12,6 +12,7 @@ allReviewsDict for all recipes.
 '''
 
 def main():
+	#Change to reviews/ for entire dataset
 	reviewDirectory = "temp/"
 	
 	#This dataset will be a list of recipe objects
@@ -29,47 +30,44 @@ def main():
 		reviewList = []	
 		recipeName = getRecipeName(f)
 		totalRating = getTotalRating(f)
-		print "*"*100
-		print f + "------- "+ str(totalRating)
-		print "*"*100
-		raw_input("Proceed displaying file ?")
+		#print "*"*100
+		#print f + "------- "+ str(totalRating)
+		#print "*"*100
+
 		for line in currentFile:
 			if line=="\n":
 				continue
 			if "Rating" in line:
 				counter = counter+1
 				rating = getReviewRating(line)
-				rating = int(rating)
-				ratingList.append(int(rating))
+				ratingList.append(rating)
 			else : 
 				review = cleaning.processForAnotherFile(line)
 				if review != []:
 					reviewList.append(review)
 
-
-		print "Length of review list "+str(len(reviewList)) 
-		print "Counter : "
-		print ratingList
-		print ""
-		print ""
-		print reviewList		
+		#print "Length of review list "+str(len(reviewList)) 
+		#print "Counter : "
+		#print ratingList
+		#print ""
+		#print ""
+		#print reviewList		
 
 		#Representing each review and its rating as a tuple
 		for i in range(0,len(reviewList)):
 			allReviewsListOfTuples.append((reviewList[i],ratingList[i]))
-		
 		RecipeObj = Recipe(name=recipeName, rating=totalRating, allReviews=allReviewsListOfTuples,numOfReviews= counter)
 		Dataset.append(RecipeObj)
 
-	for obj in Dataset:
-		print obj.name+" --> "+str(obj.rating)+ " Number of Reviews --> "+ str(obj.numOfReviews)
-		print obj.allReviews
+	#for obj in Dataset:
+		#print obj.name+" --> "+str(obj.rating)+ " Number of Reviews --> "+ str(obj.numOfReviews)
+		#print obj.allReviews
 		#raw_input("Proceed ?")	
-
-	pickleFile = open("ReviewsDataStructureDump.txt", "wb")
+	print "Now opening pickle file dumping data"	
+	pickleFile = open("ReviewsDataStructureDump.pickle", "wb")
 	pickle.dump(Dataset, pickleFile)
 	pickleFile.close()	
-		
+	print "Finished dumping pickle file"	
 	#print "Total Number of Reviews : "+str(len(reviewList))
 		
 	#allReviews.close()				
@@ -84,6 +82,7 @@ def getRecipeName(rawRecipeName):
 '''def getReviewsAndRatings(currentFile):
 	ratingIndex = currentFile.findall("Rating")
 '''	
+
 def getReviewRating(line):
 	regEx = "\d+"
 	regExObj = re.compile(regEx)
