@@ -20,5 +20,16 @@ topicProbabilities = This is a list of list of probabilites of each topic as a t
 						to access topic for the corresponding review.				
 					(I was going to keep only the topic with the highest probability,
 						but I thought it would be useful for you to have all probabilites 
-						at your disposal.)
+						at your disposal.)																		
 '''															 
+
+
+'''
+changes suggested by Rahul:
+
+1) remove bag of words from allReviews, and so allReviews would just be a simple list of review ratings...
+2) elements inside the topic probabilities must be a dictionary with key as topic number and value would be the probability...
+
+'''
+
+
