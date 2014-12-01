@@ -2,33 +2,6 @@ import logging
 import cPickle as pickle
 import re
 
-
-def main():
-	logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
-	
-	listOfReviews = []
-	rawFile = open('someReviews.txt')
-	for line in rawFile:
-		line = line.lower()
-		'''Removed all punctuation, 
-		yet kept count of the number of numberOfExclamations
-		as it may indicate positive sentiment. May or may not work as feature.
-		Lets Try
-		'''
-		punctuationRemoved = processLine(line)
-		punctuationRemoved = [word for word in punctuationRemoved if word != ' ']
-		punctuationRemoved = removeStopWords(punctuationRemoved)
-		listOfReviews.append(punctuationRemoved)
-	
-	for review in listOfReviews:
-		for word in review:
-			print type(word)
-
-	writeObject = open('listOfListDump.pickle','wb')
-	pickle.dump(listOfReviews,writeObject)
-
-	writeObject.close()
-
 def processForAnotherFile(line):
 	line = line.lower()
 	'''
@@ -41,7 +14,7 @@ def processForAnotherFile(line):
 	return punctuationRemoved
 
 def removeStopWords(splittedCleaned):
-	fl = open("stopwordslist.txt")
+	fl = open("stopwords.stop")
 	stoplist = []
 	fullyCleaned = []
 	for stopword in fl:

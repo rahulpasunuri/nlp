@@ -3,6 +3,7 @@ import logging
 import gensim
 import cleaning
 import Recipe
+from Recipe2 import Recipe2
 import cPickle as pickle
 
 '''
@@ -27,19 +28,15 @@ def main():
 	for obj in ReviewObjList:
 		allReviews = obj.allReviews
 		for i in range(0,len(allReviews)):
-			#print allReviews[i][0]
 			temp = []
 			for word in allReviews[i][0]:
-				#print "Type = "+ str(type(unicode(allReviews[i][0][0],errors='ignore')))
 				word = unicode(word,errors='ignore')
 				temp.append(word)
 			print "Working on it ... "+str(len(bigListOfReviews))	
 			bigListOfReviews.append(temp)
 	
 	print "Successfully loaded data in memory"		
-	#print bigListOfReviews	
 	print "Total length of reviews : "+str(len(bigListOfReviews))
-	#print bigListOfReviews
 
 	dictionary = corpora.Dictionary(bigListOfReviews)
 	print dictionary
@@ -52,28 +49,29 @@ def main():
 	lda = gensim.models.ldamulticore.LdaMulticore(corpus=corpus,id2word=id2word,num_topics=10,passes=1)
 	lda.print_topics(10)
 
-	print "Naming Topics : "
-	print lda.show_topic(1, topn=2)
+	Review2ObjList = []
 	for obj in ReviewObjList:
-		listOfTopicProbabilities = []
+		listOfTopicProbDict= []
 		for i in range(0,len(allReviews)):
 			tempReview = allReviews[i][0]
-			result = lda[dictionary.doc2bow(tempReview)]
-			listOfTopicProbabilities.append(result)
-		obj.topicProbabilities = listOfTopicProbabilities	
+			result = tuple2dictionary(lda[dictionary.doc2bow(tempReview)])
+			listOfTopicProbDict.append(result)
 
+		listOfRecipeRatings = []	
+		for tempTuple in obj.allReviews:
+			listOfRecipeRatings.append(tempTuple[1])
+
+		Review2ObjList.append(Recipe2(name=obj.name,rating=obj.rating,reviewRatings=listOfRecipeRatings,numOfReviews=obj.numOfReviews, topicProbabilities=listOfTopicProbDict))	
+
+	print "Writing to LDAProcessed.pickle file"	
 	pickleFile = open("LDAProcessed.pickle","wb")
-	pickle.dump(ReviewObjList, pickleFile)
+	pickle.dump(Review2ObjList, pickleFile)
 	pickleFile.close()
+	print "Finished Writing to pickle File"
 
-	'''for obj in ReviewObjList:
-		print "*"*20
-		print obj.name+" --> "+"TotalRating : "+obj.rating+"  Total Reviews: "+str(obj.numOfReviews)
-		print " "
-		for i in range(len(obj.allReviews)):
-			print obj.allReviews[i][0]
-			print obj.topicProbabilities[i]
-		print "*"*20
-		raw_input("Proceed ?")		
-	'''
+def tuple2dictionary(listOfTuples):
+	dictOfProbabilities = {}
+	for tempTuple in listOfTuples:
+		dictOfProbabilities[tempTuple[0]] = tempTuple[1]
+	return dictOfProbabilities	
 if __name__=="__main__": main()	

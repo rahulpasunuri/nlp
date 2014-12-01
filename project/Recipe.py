@@ -30,6 +30,7 @@ changes suggested by Rahul:
 1) remove bag of words from allReviews, and so allReviews would just be a simple list of review ratings...
 2) elements inside the topic probabilities must be a dictionary with key as topic number and value would be the probability...
 
+Changes implemented by Huzefa :)
 '''
 
 

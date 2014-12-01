@@ -13,7 +13,7 @@ allReviewsDict for all recipes.
 
 def main():
 	#Change to reviews/ for entire dataset
-	reviewDirectory = "temp/"
+	reviewDirectory = "reviews/"
 	
 	#This dataset will be a list of recipe objects
 	Dataset = []
@@ -30,10 +30,7 @@ def main():
 		reviewList = []	
 		recipeName = getRecipeName(f)
 		totalRating = getTotalRating(f)
-		#print "*"*100
-		#print f + "------- "+ str(totalRating)
-		#print "*"*100
-
+		
 		for line in currentFile:
 			if line=="\n":
 				continue
@@ -46,31 +43,18 @@ def main():
 				if review != []:
 					reviewList.append(review)
 
-		#print "Length of review list "+str(len(reviewList)) 
-		#print "Counter : "
-		#print ratingList
-		#print ""
-		#print ""
-		#print reviewList		
-
+		
 		#Representing each review and its rating as a tuple
 		for i in range(0,len(reviewList)):
 			allReviewsListOfTuples.append((reviewList[i],ratingList[i]))
 		RecipeObj = Recipe(name=recipeName, rating=totalRating, allReviews=allReviewsListOfTuples,numOfReviews= counter)
 		Dataset.append(RecipeObj)
 
-	#for obj in Dataset:
-		#print obj.name+" --> "+str(obj.rating)+ " Number of Reviews --> "+ str(obj.numOfReviews)
-		#print obj.allReviews
-		#raw_input("Proceed ?")	
 	print "Now opening pickle file dumping data"	
 	pickleFile = open("ReviewsDataStructureDump.pickle", "wb")
 	pickle.dump(Dataset, pickleFile)
 	pickleFile.close()	
-	print "Finished dumping pickle file"	
-	#print "Total Number of Reviews : "+str(len(reviewList))
-		
-	#allReviews.close()				
+	print "Finished dumping pickle file"				
 
 def getRecipeName(rawRecipeName):
 	startIndex = rawRecipeName.rfind('_');
@@ -78,10 +62,6 @@ def getRecipeName(rawRecipeName):
 	semiProcessed = rawRecipeName[startIndex+1:endIndex]
 	processedName = semiProcessed.replace('-',' ')
 	return processedName
-
-'''def getReviewsAndRatings(currentFile):
-	ratingIndex = currentFile.findall("Rating")
-'''	
 
 def getReviewRating(line):
 	regEx = "\d+"
