@@ -12,14 +12,18 @@ allReviewsDict for all recipes.
 '''
 
 def main():
+
+	#Change this to your br2 path
+	baseDir = ""
+
 	#Change to reviews/ for entire dataset
-	reviewDirectory = "reviews/"
+	reviewDirectory = baseDir+"temp/"
 	
 	#This dataset will be a list of recipe objects
 	Dataset = []
 
 	fileList = os.listdir(reviewDirectory)
-	#allReviews = open("fewReviews.txt",'w')
+
 	counter = 0
 	for f in fileList:
 
@@ -51,7 +55,7 @@ def main():
 		Dataset.append(RecipeObj)
 
 	print "Now opening pickle file dumping data"	
-	pickleFile = open("ReviewsDataStructureDump.pickle", "wb")
+	pickleFile = open(baseDir+"ReviewsDataStructureDump.pickle", "wb")
 	pickle.dump(Dataset, pickleFile)
 	pickleFile.close()	
 	print "Finished dumping pickle file"				

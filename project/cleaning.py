@@ -14,7 +14,11 @@ def processForAnotherFile(line):
 	return punctuationRemoved
 
 def removeStopWords(splittedCleaned):
-	fl = open("stopwords.stop")
+
+	#Change this to your br2 path
+	baseDir = ""
+
+	fl = open(baseDir+"stopwords.stop")
 	stoplist = []
 	fullyCleaned = []
 	for stopword in fl:
