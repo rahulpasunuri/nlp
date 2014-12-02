@@ -70,5 +70,5 @@ def partitionForDataSet():
 	pickle.dump(liTestFiles, p2)
 	p2.close()
 		
-partitionForDataSet()
+#partitionForDataSet()
 			

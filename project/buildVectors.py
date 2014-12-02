@@ -2,7 +2,7 @@
 import cPickle as pickle
 
 def main():
-	ldaPicklePath = "ReviewsDataStructureDump.p"
+	ldaPicklePath = "LDAProcessed.pickle"
 	trainf = open("liTrainingFiles.pickle","rb")	
 	testf = open("liTestFiles.pickle","rb")
 	trainingFile = open("trainVectors.txt","w")
@@ -20,36 +20,50 @@ def main():
 	pickleFile = open(ldaPicklePath,"rb")
 	recipes = pickle.load(pickleFile)
 	pickleFile.close()
-
+	
+	print "Total Recipes is ", len(recipes)
+	
+	
 	if len(recipes)<0:
 		print "No recipes found"
 		exit()
 	
+	#get all the list of topics..
 	liTopics = []
+	numReviews = 0
 	for r in recipes:
-		liTopics =  [ k for k in r.topicProbabilities[0]] #get all keys of the first prob vector..
-		liTopics.sort()
-								
+		numReviews += r.numOfReviews
+		for tp in r.topicProbabilities:
+			for key in tp:
+				if key not in liTopics:
+					liTopics.append(key)
+
+	print "Total number of reviews is ", numReviews
+	
+	liTopics.sort()																		
+	
 	for r in recipes:
-		v = [] #this is the data vector
-		v.append(r.rating) # first element of the vector is rating...
-		v.extend([0 for a in liTopics]) #init values of feature topics as 0.
-		
-		for r in range(r.numReviews):
-			rating = r.allReviews[r]
-			topicDictionary = r.topicProbabilities[r]					
+		if len(r.topicProbabilities) == r.numOfReviews:
+			v = [] #this is the data vector
+			v.append(float(r.rating)) # first element of the vector is rating...
+			v.extend([0 for a in liTopics]) #init values of feature topics as 0.
+			for j in range(r.numOfReviews):
 			
-			sum1= 0
-			#normalize the topic dict first..
-			for key in topicDictionary:
-				sum1 +=topicDictionary[key]
+				rating = r.reviewRatings[j]
+				topicDictionary = r.topicProbabilities[j]					
 			
-			for key in topicDictionary:
-				topicDictionary[key] = topicDictionary[key]/sum1	
+				sum1= 0
+				#normalize the topic dict first..
+				for key in topicDictionary:
+					sum1 +=topicDictionary[key]
 			
-			for i in range(liTopics):
-				v[i+1] += topicDictionary[liTopics[i]] * rating
-		
+				for key in topicDictionary:
+					topicDictionary[key] = topicDictionary[key]/sum1	
+			
+				for i in range(len(liTopics)):
+					if liTopics[i] in topicDictionary:
+						v[i+1] += topicDictionary[liTopics[i]] * float(rating)
+						
 		#normalize the data vector now..
 		sum1 = 0
 		for i in range(len(liTopics)):
@@ -66,9 +80,10 @@ def main():
 			if v[i+1]!=0:
 				s+=" "
 				s+=str(i+1)
-				s+=" "
+				s+=":"
 				s+=str(v[i+1])			
-						
+				
+		s+="\n"		
 		#if it is a recipe for training.
 		if r.name in liTrainingFiles:			
 			trainingFile.write(s)
