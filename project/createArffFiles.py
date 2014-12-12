@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import cPickle as pickle
+import math
 
 def main():
 	#ldaPicklePath = "LDAProcessed.pickle"
@@ -8,9 +9,20 @@ def main():
 	
 	trainf = open("liTrainingFiles.pickle","rb")	
 	testf = open("liTestFiles.pickle","rb")
-	trainingFile = open("trainVectors5.txt","w")
-	testFile = open("testVectors5.txt","w")
 	
+	topic = 5
+	
+	trainingFile = open("trainVectors"+str(topic)+".arff","w")
+	testFile = open("testVectors"+str(topic)+".arff","w")
+	
+	header = "@relation lda\n\n"
+	for i in range(topic):
+		header = header + "@attribute topic" + str(i)+" numeric"+"\n"
+	header += "@attribute classLabel {1.0, 2.0, 3.0, 4.0}"
+	header +="\n"
+	
+	header +="@data\n"		 
+		
 	#the list of files to be used as training and testing...
 	liTrainingFiles = pickle.load(trainf)
 	liTestFiles = pickle.load(testf)
@@ -50,9 +62,10 @@ def main():
 	
 	liTopics.sort()																		
 	errors = 0
-	for r in recipes:
-		if len(r.topicProbabilities) == r.numOfReviews:
-			v = [] #this is the data vector
+	c = 0
+	for r in recipes:	
+		v = [] #this is the data vector
+		if len(r.topicProbabilities) == r.numOfReviews:			
 			v.append(float(r.rating)) # first element of the vector is rating...
 			v.extend([0 for a in liTopics]) #init values of feature topics as 0.
 			for j in range(r.numOfReviews):
@@ -72,31 +85,28 @@ def main():
 					if liTopics[i] in topicDictionary:
 						v[i+1] += topicDictionary[liTopics[i]] * float(rating)
 		else:
-			errors+=1		
+			errors+=1
 			continue
-			
+					
 		#normalize the data vector now..
 		sum1 = 0
-		
 		for i in range(len(liTopics)):
 			sum1+= v[i+1]
 
-		if sum1 == 0:
-			continue
+		if sum1 ==0:
+			continue # no topics for these...
 
 		for i in range(len(liTopics)):
 			v[i+1] = v[i+1]/sum1		
-					
-		s = ""
-		s+= str(v[0])
+		
+			
+		s = ""		
 		
 		for i in range(len(liTopics)):
-			if v[i+1]!=0:
-				s+=" "
-				s+=str(i+1)
-				s+=":"
-				s+=str(v[i+1])			
-				
+			s+=str(v[i+1])																
+			s+=","
+		s+=str(v[0])#append class label at the end.
+		
 		s+="\n"		
 		#if it is a recipe for training.
 
@@ -114,7 +124,9 @@ def main():
 	lenTwo = len(twoRating)
 	lenThree = len(threeRating)
 	lenFour = len(fourRating)
-			
+	
+	trainingFile.write(header)
+	testFile.write(header)
 	for i in range(lenOne):
 		if i < 	(4*lenOne)/5:
 			trainingFile.write(oneRating[i])
