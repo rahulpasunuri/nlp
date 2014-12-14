@@ -14,6 +14,7 @@ def main():
 	
 	trainingFile = open("trainVectors"+str(topic)+".arff","w")
 	testFile = open("testVectors"+str(topic)+".arff","w")
+	allFile = open("completeVectors"+str(topic)+".arff","w")
 	
 	header = "@relation lda\n\n"
 	for i in range(topic):
@@ -128,29 +129,33 @@ def main():
 	trainingFile.write(header)
 	testFile.write(header)
 	for i in range(lenOne):
+		allFile.write(oneRating[i])
 		if i < 	(4*lenOne)/5:
 			trainingFile.write(oneRating[i])
 		else:
 			testFile.write(oneRating[i])									
 
 	for i in range(lenTwo):
+		allFile.write(twoRating[i])
 		if i < 	(4*lenTwo)/5:
 			trainingFile.write(twoRating[i])
 		else:
 			testFile.write(twoRating[i])									
 						
 	for i in range(lenThree):
+		allFile.write(threeRating[i])
 		if i < 	(4*lenThree)/5:
 			trainingFile.write(threeRating[i])
 		else:
 			testFile.write(threeRating[i])									
 			
 	for i in range(lenFour):
+		allFile.write(fourRating[i])
 		if i < 	(4*lenFour)/5:
 			trainingFile.write(fourRating[i])
 		else:
 			testFile.write(fourRating[i])												
-
+	
 	print "Errors are ", errors
 	
 	trainingFile.close()
