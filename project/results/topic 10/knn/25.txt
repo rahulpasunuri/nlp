@@ -1,0 +1,59 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.lazy.IBk -K 25 -W 0 -A "weka.core.neighboursearch.LinearNNSearch -A \"weka.core.EuclideanDistance -R first-last\""
+Relation:     lda
+Instances:    13596
+Attributes:   11
+              topic0
+              topic1
+              topic2
+              topic3
+              topic4
+              topic5
+              topic6
+              topic7
+              topic8
+              topic9
+              classLabel
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+IB1 instance-based classifier
+using 25 nearest neighbour(s) for classification
+
+
+Time taken to build model: 0.02 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        8154               59.9735 %
+Incorrectly Classified Instances      5442               40.0265 %
+Kappa statistic                          0.2314
+Mean absolute error                      0.2343
+Root mean squared error                  0.3554
+Relative absolute error                 84.0887 %
+Root relative squared error             95.2169 %
+Coverage of cases (0.95 level)          96.6019 %
+Mean rel. region size (0.95 level)      55.5218 %
+Total Number of Instances            13596     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.011    0.001    0.095      0.011    0.020      0.028    0.777     0.112     1.0
+                 0.021    0.004    0.227      0.021    0.038      0.054    0.741     0.159     2.0
+                 0.442    0.253    0.559      0.442    0.494      0.199    0.662     0.550     3.0
+                 0.804    0.511    0.624      0.804    0.703      0.310    0.729     0.722     4.0
+Weighted Avg.    0.600    0.368    0.568      0.600    0.570      0.246    0.703     0.611     
+
+=== Confusion Matrix ===
+
+    a    b    c    d   <-- classified as
+    2   19  142   20 |    a = 1.0
+    8   15  496  209 |    b = 2.0
+    6   26 2524 3149 |    c = 3.0
+    5    6 1356 5613 |    d = 4.0
+
+

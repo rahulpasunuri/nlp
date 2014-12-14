@@ -1,0 +1,89 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.Logistic -R 1.0E-8 -M -1
+Relation:     lda
+Instances:    13596
+Attributes:   11
+              topic0
+              topic1
+              topic2
+              topic3
+              topic4
+              topic5
+              topic6
+              topic7
+              topic8
+              topic9
+              classLabel
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                  Class
+Variable            1.0         2.0         3.0
+===============================================
+topic0           0.7163     -0.3317     -0.8212
+topic1         -11.3129     -7.5176     -2.6872
+topic2          -2.3538     -1.7314     -2.3387
+topic3           2.5954      0.5651     -0.0344
+topic4           7.1599      2.4832      0.4167
+topic5           3.3106      2.2842      0.8043
+topic6          -0.5343      0.7305      1.2125
+topic7          10.7052      7.2294      2.8834
+topic8           4.2423       2.012      0.8328
+topic9           0.0956      1.3362      0.1336
+Intercept       -5.1533     -2.7425     -0.1879
+
+
+Odds Ratios...
+                  Class
+Variable            1.0         2.0         3.0
+===============================================
+topic0           2.0469      0.7177      0.4399
+topic1                0      0.0005      0.0681
+topic2            0.095       0.177      0.0965
+topic3          13.4018      1.7596      0.9662
+topic4        1286.7522     11.9796       1.517
+topic5          27.4007       9.818      2.2352
+topic6           0.5861      2.0762      3.3617
+topic7       44585.7774   1379.3684     17.8753
+topic8          69.5656      7.4784      2.2996
+topic9           1.1003      3.8044       1.143
+
+
+Time taken to build model: 1.8 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        8168               60.0765 %
+Incorrectly Classified Instances      5428               39.9235 %
+Kappa statistic                          0.2357
+Mean absolute error                      0.2609
+Root mean squared error                  0.3608
+Relative absolute error                 93.6099 %
+Root relative squared error             96.6684 %
+Coverage of cases (0.95 level)          98.0877 %
+Mean rel. region size (0.95 level)      61.9815 %
+Total Number of Instances            13596     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.066    0.002    0.273      0.066    0.106      0.128    0.862     0.161     1.0
+                 0.008    0.002    0.207      0.008    0.016      0.031    0.743     0.175     2.0
+                 0.474    0.266    0.563      0.474    0.514      0.214    0.625     0.540     3.0
+                 0.781    0.495    0.625      0.781    0.694      0.298    0.684     0.627     4.0
+Weighted Avg.    0.601    0.366    0.572      0.601    0.574      0.246    0.665     0.560     
+
+=== Confusion Matrix ===
+
+    a    b    c    d   <-- classified as
+   12   11  121   39 |    a = 1.0
+   10    6  457  255 |    b = 2.0
+   15   10 2702 2978 |    c = 3.0
+    7    2 1523 5448 |    d = 4.0
+
+

@@ -1,0 +1,504 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.meta.LogitBoost -P 100 -F 0 -R 1 -L -1.7976931348623157E308 -H 1.0 -Z 3.0 -S 1 -I 10 -W weka.classifiers.trees.DecisionStump
+Relation:     lda
+Instances:    13596
+Attributes:   6
+              topic0
+              topic1
+              topic2
+              topic3
+              topic4
+              classLabel
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+LogitBoost: Base classifiers and their weights: 
+
+Iteration 1
+	Class 1 (classLabel=1.0)
+
+Decision Stump
+
+Classifications
+
+topic4 <= 0.492595378697 : -1.277448930757236
+topic4 > 0.492595378697 : -0.5826771653540587
+topic4 is missing : -1.2559127187521284
+
+
+	Class 2 (classLabel=2.0)
+
+Decision Stump
+
+Classifications
+
+topic0 <= 0.07086302950015 : -0.3854954430870565
+topic0 > 0.07086302950015 : -1.1207128908935848
+topic0 is missing : -1.0293862607187372
+
+
+	Class 3 (classLabel=3.0)
+
+Decision Stump
+
+Classifications
+
+topic0 <= 0.190375025782 : 1.3350617027895464
+topic0 > 0.190375025782 : 0.4097474914541729
+topic0 is missing : 0.7935818295226905
+
+
+	Class 4 (classLabel=4.0)
+
+Decision Stump
+
+Classifications
+
+topic0 <= 0.15504008928899998 : 0.15759398496240087
+topic0 > 0.15504008928899998 : 1.6014854357661474
+topic0 is missing : 1.1994640763689661
+
+
+Iteration 2
+	Class 1 (classLabel=1.0)
+
+Decision Stump
+
+Classifications
+
+topic4 <= 0.40260119328599997 : -0.9300628317190414
+topic4 > 0.40260119328599997 : 0.008050335964162061
+topic4 is missing : -0.8431233996523584
+
+
+	Class 2 (classLabel=2.0)
+
+Decision Stump
+
+Classifications
+
+topic0 <= 0.119181727463 : 0.08395246341979364
+topic0 > 0.119181727463 : -0.5826971633795948
+topic0 is missing : -0.37938527629727364
+
+
+	Class 3 (classLabel=3.0)
+
+Decision Stump
+
+Classifications
+
+topic2 <= 0.132075739819 : 0.4752447944727246
+topic2 > 0.132075739819 : 0.026900965606803603
+topic2 is missing : 0.27876659424574973
+
+
+	Class 4 (classLabel=4.0)
+
+Decision Stump
+
+Classifications
+
+topic2 <= 0.03594040220005 : -0.6160117932951341
+topic2 > 0.03594040220005 : 0.27097665971638385
+topic2 is missing : 0.13857897777631023
+
+
+Iteration 3
+	Class 1 (classLabel=1.0)
+
+Decision Stump
+
+Classifications
+
+topic0 <= 0.0538301628163 : 0.36392001384487027
+topic0 > 0.0538301628163 : -0.766320983105419
+topic0 is missing : -0.5944801486575751
+
+
+	Class 2 (classLabel=2.0)
+
+Decision Stump
+
+Classifications
+
+topic4 <= 0.14449728491000002 : -0.443550219649509
+topic4 > 0.14449728491000002 : 0.26379040544915494
+topic4 is missing : -0.11969568641044896
+
+
+	Class 3 (classLabel=3.0)
+
+Decision Stump
+
+Classifications
+
+topic0 <= 0.15592100117199997 : -0.22195302816215928
+topic0 > 0.15592100117199997 : 0.20393409794984546
+topic0 is missing : 0.06997087700877808
+
+
+	Class 4 (classLabel=4.0)
+
+Decision Stump
+
+Classifications
+
+topic4 <= 0.1107005254205 : 0.26921277092095025
+topic4 > 0.1107005254205 : -0.1254180969254471
+topic4 is missing : 0.0688005995188834
+
+
+Iteration 4
+	Class 1 (classLabel=1.0)
+
+Decision Stump
+
+Classifications
+
+topic4 <= 0.23864224999650002 : -0.6835728506121361
+topic4 > 0.23864224999650002 : 0.13574162291469447
+topic4 is missing : -0.3932245526618423
+
+
+	Class 2 (classLabel=2.0)
+
+Decision Stump
+
+Classifications
+
+topic2 <= 0.023269999209849998 : 0.5994202801671369
+topic2 > 0.023269999209849998 : -0.19465698717138077
+topic2 is missing : -0.08365711576058538
+
+
+	Class 3 (classLabel=3.0)
+
+Decision Stump
+
+Classifications
+
+topic1 <= 0.3901500701415 : -0.012859973811431223
+topic1 > 0.3901500701415 : 0.20863947825196363
+topic1 is missing : 0.03304626455373551
+
+
+	Class 4 (classLabel=4.0)
+
+Decision Stump
+
+Classifications
+
+topic3 <= 0.0257193029966 : -0.4486899481288296
+topic3 > 0.0257193029966 : 0.07214432542368973
+topic3 is missing : 0.037205134860838276
+
+
+Iteration 5
+	Class 1 (classLabel=1.0)
+
+Decision Stump
+
+Classifications
+
+topic2 <= 0.02528181031215 : 0.5399329781058193
+topic2 > 0.02528181031215 : -0.36925820067333265
+topic2 is missing : -0.2199269878858579
+
+
+	Class 2 (classLabel=2.0)
+
+Decision Stump
+
+Classifications
+
+topic0 <= 0.205024550548 : 0.12261680049419274
+topic0 > 0.205024550548 : -0.26396796501622355
+topic0 is missing : -0.023146577313315136
+
+
+	Class 3 (classLabel=3.0)
+
+Decision Stump
+
+Classifications
+
+topic0 <= 0.187730976119 : -0.10437905115982919
+topic0 > 0.187730976119 : 0.10506843105636765
+topic0 is missing : 0.018686685439370243
+
+
+	Class 4 (classLabel=4.0)
+
+Decision Stump
+
+Classifications
+
+topic3 <= 0.13977169491949998 : 0.13144141660368555
+topic3 > 0.13977169491949998 : -0.08630956520875506
+topic3 is missing : 0.007885481625030912
+
+
+Iteration 6
+	Class 1 (classLabel=1.0)
+
+Decision Stump
+
+Classifications
+
+topic0 <= 0.1117030773305 : 0.257181836019747
+topic0 > 0.1117030773305 : -0.40615661466031533
+topic0 is missing : -0.11197191527822571
+
+
+	Class 2 (classLabel=2.0)
+
+Decision Stump
+
+Classifications
+
+topic3 <= 0.0254167565077 : 0.43252388540982234
+topic3 > 0.0254167565077 : -0.09053864332406977
+topic3 is missing : -0.03011319846428905
+
+
+	Class 3 (classLabel=3.0)
+
+Decision Stump
+
+Classifications
+
+topic0 <= 0.27728662773 : 0.06456866577876659
+topic0 > 0.27728662773 : -0.10792391037982392
+topic0 is missing : 0.00821252794314314
+
+
+	Class 4 (classLabel=4.0)
+
+Decision Stump
+
+Classifications
+
+topic1 <= 0.0172664116198 : -0.3608086914733425
+topic1 > 0.0172664116198 : 0.04353467931648562
+topic1 is missing : 0.008964221636577827
+
+
+Iteration 7
+	Class 1 (classLabel=1.0)
+
+Decision Stump
+
+Classifications
+
+topic1 <= 0.0291348367255 : 0.38237491594634065
+topic1 > 0.0291348367255 : -0.2483614126734671
+topic1 is missing : -0.04802432950408895
+
+
+	Class 2 (classLabel=2.0)
+
+Decision Stump
+
+Classifications
+
+topic2 <= 0.22356474733999998 : 0.13157432282740877
+topic2 > 0.22356474733999998 : -0.2658576529419918
+topic2 is missing : 0.0012497564136401901
+
+
+	Class 3 (classLabel=3.0)
+
+Decision Stump
+
+Classifications
+
+topic0 <= 0.5893372743405 : -0.0050400200443167145
+topic0 > 0.5893372743405 : 0.5937280881591599
+topic0 is missing : 0.005641768450959462
+
+
+	Class 4 (classLabel=4.0)
+
+Decision Stump
+
+Classifications
+
+topic4 <= 0.0307442544597 : -0.2827646608290196
+topic4 > 0.0307442544597 : 0.027056615245347148
+topic4 is missing : -0.002457824947452336
+
+
+Iteration 8
+	Class 1 (classLabel=1.0)
+
+Decision Stump
+
+Classifications
+
+topic4 <= 0.168354555104 : -0.3141920316055476
+topic4 > 0.168354555104 : 0.14661475407591604
+topic4 is missing : -0.027276488837500022
+
+
+	Class 2 (classLabel=2.0)
+
+Decision Stump
+
+Classifications
+
+topic4 <= 0.269326657986 : -0.09799102298192146
+topic4 > 0.269326657986 : 0.27087973427415385
+topic4 is missing : -2.320403070465664E-4
+
+
+	Class 3 (classLabel=3.0)
+
+Decision Stump
+
+Classifications
+
+topic4 <= 0.06989140123644999 : -0.13317056660858176
+topic4 > 0.06989140123644999 : 0.05150279295902014
+topic4 is missing : 3.9691650002908154E-4
+
+
+	Class 4 (classLabel=4.0)
+
+Decision Stump
+
+Classifications
+
+topic4 <= 0.08726571771625 : 0.13466040975132496
+topic4 > 0.08726571771625 : -0.07857643805651109
+topic4 is missing : 0.0016820616040524857
+
+
+Iteration 9
+	Class 1 (classLabel=1.0)
+
+Decision Stump
+
+Classifications
+
+topic3 <= 0.44193784247900003 : -0.09842133345789804
+topic3 > 0.44193784247900003 : 0.6345293124460925
+topic3 is missing : -0.005341496361527778
+
+
+	Class 2 (classLabel=2.0)
+
+Decision Stump
+
+Classifications
+
+topic4 <= 0.1016808466695 : -0.1690214342213214
+topic4 > 0.1016808466695 : 0.07288711063723154
+topic4 is missing : -0.002312287752744338
+
+
+	Class 3 (classLabel=3.0)
+
+Decision Stump
+
+Classifications
+
+topic1 <= 0.08943495892635 : -0.13466976203070455
+topic1 > 0.08943495892635 : 0.06384583637560166
+topic1 is missing : 0.0016971204080930857
+
+
+	Class 4 (classLabel=4.0)
+
+Decision Stump
+
+Classifications
+
+topic2 <= 0.22584052088599998 : -0.06346440671420546
+topic2 > 0.22584052088599998 : 0.16035875815695794
+topic2 is missing : -7.475705649079322E-4
+
+
+Iteration 10
+	Class 1 (classLabel=1.0)
+
+Decision Stump
+
+Classifications
+
+topic0 <= 0.2236416385625 : 0.09615621285165056
+topic0 > 0.2236416385625 : -0.33095500833241376
+topic0 is missing : -0.007379778047658006
+
+
+	Class 2 (classLabel=2.0)
+
+Decision Stump
+
+Classifications
+
+topic2 <= 0.1692956850735 : 0.0983214166424133
+topic2 > 0.1692956850735 : -0.15739910161099924
+topic2 is missing : -0.001240441768154392
+
+
+	Class 3 (classLabel=3.0)
+
+Decision Stump
+
+Classifications
+
+topic2 <= 0.003741758448965 : -0.5954058018066021
+topic2 > 0.003741758448965 : 0.008141239730934656
+topic2 is missing : -0.0014420733428462066
+
+
+	Class 4 (classLabel=4.0)
+
+Decision Stump
+
+Classifications
+
+topic0 <= 0.08806405137885 : -0.19039577304014416
+topic0 > 0.08806405137885 : 0.030395215409486576
+topic0 is missing : 0.002353287708232965
+
+Number of performed iterations: 10
+
+
+Time taken to build model: 1.63 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        8314               61.1503 %
+Incorrectly Classified Instances      5282               38.8497 %
+Kappa statistic                          0.2586
+Mean absolute error                      0.2476
+Root mean squared error                  0.353 
+Relative absolute error                 88.8299 %
+Root relative squared error             94.5693 %
+Coverage of cases (0.95 level)          97.97   %
+Mean rel. region size (0.95 level)      60.6759 %
+Total Number of Instances            13596     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.005    0.001    0.077      0.005    0.010      0.017    0.871     0.109     1.0
+                 0.001    0.001    0.056      0.001    0.003      0.000    0.779     0.165     2.0
+                 0.518    0.293    0.561      0.518    0.539      0.228    0.663     0.568     3.0
+                 0.767    0.445    0.645      0.767    0.701      0.331    0.723     0.699     4.0
+Weighted Avg.    0.612    0.351    0.571      0.612    0.586      0.266    0.703     0.608     
+
+=== Confusion Matrix ===
+
+    a    b    c    d   <-- classified as
+    1    3  149   30 |    a = 1.0
+    5    1  543  179 |    b = 2.0
+    5   11 2955 2734 |    c = 3.0
+    2    3 1618 5357 |    d = 4.0
+
+

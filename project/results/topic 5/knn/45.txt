@@ -1,0 +1,54 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.lazy.IBk -K 45 -W 0 -A "weka.core.neighboursearch.LinearNNSearch -A \"weka.core.EuclideanDistance -R first-last\""
+Relation:     lda
+Instances:    13596
+Attributes:   6
+              topic0
+              topic1
+              topic2
+              topic3
+              topic4
+              classLabel
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+IB1 instance-based classifier
+using 45 nearest neighbour(s) for classification
+
+
+Time taken to build model: 0.01 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        8388               61.6946 %
+Incorrectly Classified Instances      5208               38.3054 %
+Kappa statistic                          0.268 
+Mean absolute error                      0.2411
+Root mean squared error                  0.3523
+Relative absolute error                 86.5101 %
+Root relative squared error             94.3817 %
+Coverage of cases (0.95 level)          97.5875 %
+Mean rel. region size (0.95 level)      58.8408 %
+Total Number of Instances            13596     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.005    0.000    0.250      0.005    0.011      0.035    0.813     0.102     1.0
+                 0.000    0.000    0.000      0.000    0.000      -0.003   0.759     0.153     2.0
+                 0.527    0.289    0.568      0.527    0.547      0.240    0.667     0.568     3.0
+                 0.771    0.442    0.648      0.771    0.704      0.338    0.728     0.709     4.0
+Weighted Avg.    0.617    0.348    0.575      0.617    0.591      0.275    0.705     0.612     
+
+=== Confusion Matrix ===
+
+    a    b    c    d   <-- classified as
+    1    0  152   30 |    a = 1.0
+    1    0  535  192 |    b = 2.0
+    1    1 3004 2699 |    c = 3.0
+    1    1 1595 5383 |    d = 4.0
+
+

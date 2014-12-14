@@ -1,0 +1,74 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.Logistic -R 1.0E-8 -M -1
+Relation:     lda
+Instances:    13596
+Attributes:   6
+              topic0
+              topic1
+              topic2
+              topic3
+              topic4
+              classLabel
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                 Class
+Variable           1.0        2.0        3.0
+============================================
+topic0         -7.6898    -6.4878    -3.0035
+topic1         -0.1397     1.2313     1.0113
+topic2         -1.0085    -0.8872    -0.7275
+topic3          2.4414     1.2606     0.6891
+topic4          6.9862     4.5092      1.571
+Intercept      -4.0552    -2.1357      0.018
+
+
+Odds Ratios...
+                 Class
+Variable           1.0        2.0        3.0
+============================================
+topic0          0.0005     0.0015     0.0496
+topic1          0.8696     3.4256     2.7491
+topic2          0.3647     0.4118     0.4831
+topic3         11.4897     3.5276     1.9918
+topic4       1081.6342    90.8509     4.8116
+
+
+Time taken to build model: 1.47 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        8120               59.7234 %
+Incorrectly Classified Instances      5476               40.2766 %
+Kappa statistic                          0.2302
+Mean absolute error                      0.2604
+Root mean squared error                  0.3604
+Relative absolute error                 93.4404 %
+Root relative squared error             96.5639 %
+Coverage of cases (0.95 level)          97.9994 %
+Mean rel. region size (0.95 level)      62.8347 %
+Total Number of Instances            13596     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.038    0.001    0.292      0.038    0.068      0.102    0.834     0.125     1.0
+                 0.001    0.001    0.100      0.001    0.003      0.006    0.729     0.149     2.0
+                 0.496    0.292    0.551      0.496    0.522      0.208    0.635     0.548     3.0
+                 0.757    0.476    0.627      0.757    0.686      0.290    0.686     0.638     4.0
+Weighted Avg.    0.597    0.367    0.562      0.597    0.572      0.237    0.669     0.567     
+
+=== Confusion Matrix ===
+
+    a    b    c    d   <-- classified as
+    7    2  135   39 |    a = 1.0
+    8    1  477  242 |    b = 2.0
+    5    5 2829 2866 |    c = 3.0
+    4    2 1691 5283 |    d = 4.0
+
+

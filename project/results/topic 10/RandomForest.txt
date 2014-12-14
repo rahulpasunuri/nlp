@@ -1,0 +1,60 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -I 10 -K 0 -S 1 -num-slots 1
+Relation:     lda
+Instances:    13596
+Attributes:   11
+              topic0
+              topic1
+              topic2
+              topic3
+              topic4
+              topic5
+              topic6
+              topic7
+              topic8
+              topic9
+              classLabel
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Random forest of 10 trees, each constructed while considering 4 random features.
+Out of bag error: 0.457
+
+
+
+Time taken to build model: 2.17 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        8012               58.9291 %
+Incorrectly Classified Instances      5584               41.0709 %
+Kappa statistic                          0.2477
+Mean absolute error                      0.2371
+Root mean squared error                  0.3624
+Relative absolute error                 85.0641 %
+Root relative squared error             97.0815 %
+Coverage of cases (0.95 level)          96.2195 %
+Mean rel. region size (0.95 level)      57.9012 %
+Total Number of Instances            13596     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.104    0.006    0.196      0.104    0.136      0.134    0.710     0.066     1.0
+                 0.103    0.021    0.215      0.103    0.139      0.116    0.712     0.127     2.0
+                 0.596    0.376    0.534      0.596    0.563      0.218    0.645     0.526     3.0
+                 0.647    0.342    0.666      0.647    0.656      0.305    0.715     0.702     4.0
+Weighted Avg.    0.589    0.335    0.580      0.589    0.583      0.256    0.685     0.589     
+
+=== Confusion Matrix ===
+
+    a    b    c    d   <-- classified as
+   19   32  109   23 |    a = 1.0
+   18   75  482  153 |    b = 2.0
+   44  172 3402 2087 |    c = 3.0
+   16   70 2378 4516 |    d = 4.0
+
+
