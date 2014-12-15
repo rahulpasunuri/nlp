@@ -76,7 +76,7 @@ def main():
 
 	counter = 0
 	for obj in Review2ObjList:
-		print obj.topicProbabilities
+		#print obj.topicProbabilities
 		counter+=1
 		if counter == 5: break		
 

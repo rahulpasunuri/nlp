@@ -7,3 +7,15 @@ with topic number as key and the probability as value.
 
 When we provide gensim a review, it returns a list of dictionaries.
 We then make it a list of such lists to store in the pickle file.
+
+
+topic #0 (0.100): 0.017*added + 0.016*recipe + 0.008*squash + 0.008*bread + 0.007*easy + 0.006*spices + 0.006*delicious + 0.005*didn't + 0.005*honey + 0.005*yogurt
+topic #1 (0.100): 0.021*recipe + 0.014*rice + 0.010*dish + 0.008*1/2 + 0.007*delicious + 0.007*add + 0.007*bacon + 0.007*soup + 0.007*dinner + 0.006*time
+topic #2 (0.100): 0.024*recipe + 0.010*oil + 0.010*dish + 0.008*flavor + 0.008*delicious + 0.008*kale + 0.008*loved + 0.007*easy + 0.006*- + 0.006*excellent
+topic #3 (0.100): 0.013*dish + 0.012*recipe + 0.011*potatoes + 0.010*fresh + 0.008*- + 0.008*easy + 0.007*sauce + 0.007*time + 0.007*marinated + 0.007*flavor
+topic #4 (0.100): 0.023*recipe + 0.007*love + 0.007*delicious + 0.007*definitely + 0.006*served + 0.005*didn't + 0.005*soup + 0.005*loved + 0.005*nice + 0.005*bit
+topic #5 (0.100): 0.015*recipe + 0.013*mushrooms + 0.011*dish + 0.010*red + 0.008*time + 0.008*2 + 0.007*- + 0.007*chicken + 0.007*delicious + 0.007*butter
+topic #6 (0.100): 0.022*time + 0.013*recipe + 0.013*easy + 0.012*added + 0.012*delicious + 0.008*dish + 0.008*little + 0.007*dinner + 0.007*soup + 0.007*add
+topic #7 (0.100): 0.023*recipe + 0.011*added + 0.010*delicious + 0.009*didn't + 0.009*time + 0.009*pepper + 0.007*instead + 0.007*- + 0.007*oil + 0.006*little
+topic #8 (0.100): 0.029*recipe + 0.010*dish + 0.009*time + 0.007*half + 0.007*delicious + 0.007*easy + 0.006*add + 0.006*flavor + 0.006*bit + 0.006*cut
+topic #9 (0.100): 0.022*recipe + 0.016*rice + 0.011*added + 0.010*- + 0.009*sauce + 0.007*instead + 0.007*time + 0.007*delicious + 0.007*add + 0.006*cup
