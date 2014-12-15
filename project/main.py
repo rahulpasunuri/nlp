@@ -74,6 +74,12 @@ def main():
 
 		Review2ObjList.append(Recipe2(name=obj.name,rating=obj.rating,reviewRatings=listOfRecipeRatings,numOfReviews=obj.numOfReviews, topicProbabilities=listOfTopicProbDict))	
 
+	counter = 0
+	for obj in Review2ObjList:
+		print obj.topicProbabilities
+		counter+=1
+		if counter == 5: break		
+
 	print "Writing to LDAProcessed.pickle file"	
 	pickleFile = open(baseDir+"LDAProcessed.pickle","wb")
 	pickle.dump(Review2ObjList, pickleFile)

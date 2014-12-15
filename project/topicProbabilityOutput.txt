@@ -1,0 +1,9 @@
+[{0: 0.94998811657693183}, {7: 0.97352361762993378}]
+[{4: 0.97352428030034543}, {2: 0.947051109059179}, {0: 0.010002074232256216, 1: 0.010001345325269325, 2: 0.010002472212999517, 3: 0.010001449531229743, 4: 0.010002379225879827, 5: 0.31365975683440195, 6: 0.010003841102539112, 7: 0.010002181199907699, 8: 0.010001798860383554, 9: 0.60632270147513301}]
+
+See the file with word wrap off. 
+Each reviews probabilities is a dictionary in python 
+with topic number as key and the probability as value. 
+
+When we provide gensim a review, it returns a list of dictionaries.
+We then make it a list of such lists to store in the pickle file.
